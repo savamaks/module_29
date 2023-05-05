@@ -8,7 +8,7 @@ const timeCorrect = (time: string): string => {
 };
 
 export default function FullDay({arrTime, arr }: any): JSX.Element {
-
+console.log('full');
     const e = arr.map((el: any): JSX.Element => {
 
         let time = timeCorrect(el.dt_txt);
@@ -18,7 +18,7 @@ export default function FullDay({arrTime, arr }: any): JSX.Element {
         let pressure = Math.trunc((el.main.pressure / 133.3) * 100);
         return (
             <div key={el.dt} className={style.weather__box}>
-                <h2>{time}</h2>
+                <h2 className={style.weather__box_time}>{time}</h2>
                 <div className={style.weather__box_block}>
                     <img className={style.weather__box_image} src={imgUrl} alt="" />
                     <p className={style.weather__text}>{el.weather[0].description}</p>

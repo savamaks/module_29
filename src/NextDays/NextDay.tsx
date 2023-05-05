@@ -1,6 +1,6 @@
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import style from "./style.module.scss";
-import "./style.module.scss";
+// import "./style.module.scss";
 
 const arrMounth: Array<string> = [
     "января",

@@ -1,4 +1,4 @@
-import style from "./styly.module.scss";
+import style from "./style.module.scss";
 import geolocation from "../icons/geolocation.svg";
 import search from "../icons/search.svg";
 import { BaseSyntheticEvent, SyntheticEvent, useState } from "react";
@@ -41,7 +41,7 @@ export default function Search({ onSearch, initGeo }: any): JSX.Element {
         <div className={style.searchBlock}>
             <form className={style.form} onSubmit={clickButtonSearch}>
                 
-                <input value={valueInput} onChange={initInput} className={style.form__input} type="text" placeholder="Введите название города..." />
+                <input value={valueInput} onChange={initInput} className={style.form__input} type="text" placeholder="Введите название населенного пункта..." />
 
                 <button title="Поиск по названию города" className={style.form__button} onClick={clickButtonSearch} >
                     <img src={search} alt="" />

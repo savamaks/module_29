@@ -1,88 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+$anim-time: 1.8s;
 
-$font-size-title: 20px;
-$font-size-temp: 25px;
-$font-family: "Inter", sans-serif;
-
-.data{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    gap: 20px;
-    flex-wrap: nowrap;
-}
-.div{
-    width: 500px;
-    height: 300px;
-    background-color: aqua;
-}
-
-.weather {
-    width: 200px;
-    font-family: $font-family;
-    font-size: 15px;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    // width: max-content;
-    height: 400px;
-    background-color: white;
-    padding: 40px;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-
-    &__title {
-        font-size: $font-size-title;
-        font-weight: 600;
-        font-family: $font-family;
-        align-self: center;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-    &__box {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: space-around;
-        gap: 40px;
-
-        &_image {
-            width: 120px;
-            height: 120px;
-        }
-
-        &_temp {
-            font-size: $font-size-temp;
-            &.feels {
-                color: rgb(184, 183, 183);
-            }
-        }
-    }
-
-    &__compass {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 80px;
-        height: 80px;
-        background-image: url(../icons/kompass-1.png);
-        background-position: center;
-        background-size: contain;
-        &_arrow {
-            width: 40px;
-        }
-    }
-
-    &__humidity{
-        &_image{
-            width: 20px;
-            height: 20px;
-        }
-    }
-}
 .box {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -91,55 +8,60 @@ $font-family: "Inter", sans-serif;
     &__animate {
         width: 20px;
         height: 20px;
+        border-radius: 10%;
         background-color: gray;
-
+        -webkit-border-radius: 10%;
+        -moz-border-radius: 10%;
+        -ms-border-radius: 10%;
+        -o-border-radius: 10%;
         opacity: 0;
-        &:nth-child(1) {
-            animation: anim 3s infinite;
-            -webkit-animation: anim 3s infinite;
+        &:nth-child(1) 
+{
+            animation: anim $anim-time infinite;
+            -webkit-animation: anim $anim-time infinite;
         }
         &:nth-child(2) {
-            animation: anim2 3s infinite;
-            -webkit-animation: anim2 3s infinite;
+            animation: anim2 $anim-time infinite;
+            -webkit-animation: anim2 $anim-time infinite;
         }
         &:nth-child(3) {
-            animation: anim3 3s infinite;
-            -webkit-animation: anim3 3s infinite;
+            animation: anim3 $anim-time infinite;
+            -webkit-animation: anim3 $anim-time infinite;
         }
         &:nth-child(4) {
-            animation: anim4 3s infinite;
-            -webkit-animation: anim4 3s infinite;
+            animation: anim4 $anim-time infinite;
+            -webkit-animation: anim4 $anim-time infinite;
         }
         &:nth-child(5) {
-            animation: anim5 3s infinite;
-            -webkit-animation: anim5 3s infinite;
+            animation: anim5 $anim-time infinite;
+            -webkit-animation: anim5 $anim-time infinite;
         }
         &:nth-child(6) {
-            animation: anim6 3s infinite;
-            -webkit-animation: anim6 3s infinite;
+            animation: anim6 $anim-time infinite;
+            -webkit-animation: anim6 $anim-time infinite;
         }
         &:nth-child(7) {
-            animation: anim7 3s infinite;
-            -webkit-animation: anim7 3s infinite;
-}
+            animation: anim7 $anim-time infinite;
+            -webkit-animation: anim7 $anim-time infinite;
+        }
         &:nth-child(8) {
-            animation: anim8 3s infinite;
-            -webkit-animation: anim8 3s infinite;
-}
+            animation: anim8 $anim-time infinite;
+            -webkit-animation: anim8 $anim-time infinite;
+        }
         &:nth-child(9) {
-            animation: anim9 3s infinite;
-            -webkit-animation: anim9 3s infinite;
-}
+            animation: anim9 $anim-time infinite;
+            -webkit-animation: anim9 $anim-time infinite;
+        }
     }
 }
 
 @keyframes anim {
     0% {
-        transform: translate(0px, 300px);
-        -moz-transform: translate(0px, 300px);
-        -ms-transform: translate(0px, 300px);
-        -o-transform: translate(0px, 300px);
-        -webkit-transform: translate(0px, 300px);
+        transform: translate(100px, 300px);
+        -moz-transform: translate(100px, 300px);
+        -ms-transform: translate(100px, 300px);
+        -o-transform: translate(100px, 300px);
+        -webkit-transform: translate(100px, 300px);
         opacity: 0;
     }
     5% {
@@ -161,11 +83,11 @@ $font-family: "Inter", sans-serif;
 }
 @keyframes anim2 {
     0% {
-        transform: translate(0, 300px);
-        -moz-transform: translate(0, 300px);
-        -ms-transform: translate(0, 300px);
-        -o-transform: translate(0, 300px);
-        -webkit-transform: translate(0, 300px);
+        transform: translate(200px, 300px);
+        -moz-transform: translate(200px, 300px);
+        -ms-transform: translate(200px, 300px);
+        -o-transform: translate(200px, 300px);
+        -webkit-transform: translate(200px, 300px);
         opacity: 0;
     }
     10% {
@@ -187,11 +109,11 @@ $font-family: "Inter", sans-serif;
 }
 @keyframes anim3 {
     0% {
-        transform: translate(0, 300px);
-        -moz-transform: translate(0, 300px);
-        -ms-transform: translate(0, 300px);
-        -o-transform: translate(0, 300px);
-        -webkit-transform: translate(0, 300px);
+        transform: translate(300px, 300px);
+        -moz-transform: translate(300px, 300px);
+        -ms-transform: translate(300px, 300px);
+        -o-transform: translate(300px, 300px);
+        -webkit-transform: translate(300px, 300px);
         opacity: 0;
     }
     15% {
@@ -213,11 +135,11 @@ $font-family: "Inter", sans-serif;
 }
 @keyframes anim4 {
     0% {
-        transform: translate(0, 300px);
-        -moz-transform: translate(0, 300px);
-        -ms-transform: translate(0, 300px);
-        -o-transform: translate(0, 300px);
-        -webkit-transform: translate(0, 300px);
+        transform: translate(100px, 300px);
+        -moz-transform: translate(100px, 300px);
+        -ms-transform: translate(100px, 300px);
+        -o-transform: translate(100px, 300px);
+        -webkit-transform: translate(100px, 300px);
         opacity: 0;
     }
     20% {
@@ -239,11 +161,11 @@ $font-family: "Inter", sans-serif;
 }
 @keyframes anim5 {
     0% {
-        transform: translate(0, 300px);
-        -moz-transform: translate(0, 300px);
-        -ms-transform: translate(0, 300px);
-        -o-transform: translate(0, 300px);
-        -webkit-transform: translate(0, 300px);
+        transform: translate(200px, 300px);
+        -moz-transform: translate(200px, 300px);
+        -ms-transform: translate(200px, 300px);
+        -o-transform: translate(200px, 300px);
+        -webkit-transform: translate(200px, 300px);
         opacity: 0;
     }
     25% {
@@ -265,11 +187,11 @@ $font-family: "Inter", sans-serif;
 }
 @keyframes anim6 {
     0% {
-        transform: translate(0, 300px);
-        -moz-transform: translate(0, 300px);
-        -ms-transform: translate(0, 300px);
-        -o-transform: translate(0, 300px);
-        -webkit-transform: translate(0, 300px);
+        transform: translate(300px, 300px);
+        -moz-transform: translate(300px, 300px);
+        -ms-transform: translate(300px, 300px);
+        -o-transform: translate(300px, 300px);
+        -webkit-transform: translate(300px, 300px);
         opacity: 0;
     }
     30% {
@@ -291,11 +213,11 @@ $font-family: "Inter", sans-serif;
 }
 @keyframes anim7 {
     0% {
-        transform: translate(0, 300px);
-        -moz-transform: translate(0, 300px);
-        -ms-transform: translate(0, 300px);
-        -o-transform: translate(0, 300px);
-        -webkit-transform: translate(0, 300px);
+        transform: translate(100px, 300px);
+        -moz-transform: translate(100px, 300px);
+        -ms-transform: translate(100px, 300px);
+        -o-transform: translate(100px, 300px);
+        -webkit-transform: translate(100px, 300px);
         opacity: 0;
     }
     35% {
@@ -317,11 +239,11 @@ $font-family: "Inter", sans-serif;
 }
 @keyframes anim8 {
     0% {
-        transform: translate(0, 300px);
-        -moz-transform: translate(0, 300px);
-        -ms-transform: translate(0, 300px);
-        -o-transform: translate(0, 300px);
-        -webkit-transform: translate(0, 300px);
+        transform: translate(200px, 300px);
+        -moz-transform: translate(200px, 300px);
+        -ms-transform: translate(200px, 300px);
+        -o-transform: translate(200px, 300px);
+        -webkit-transform: translate(200px, 300px);
         opacity: 0;
     }
     40% {
@@ -343,11 +265,11 @@ $font-family: "Inter", sans-serif;
 }
 @keyframes anim9 {
     0% {
-        transform: translate(0, 300px);
-        -moz-transform: translate(0, 300px);
-        -ms-transform: translate(0, 300px);
-        -o-transform: translate(0, 300px);
-        -webkit-transform: translate(0, 300px);
+        transform: translate(300px, 300px);
+        -moz-transform: translate(300px, 300px);
+        -ms-transform: translate(300px, 300px);
+        -o-transform: translate(300px, 300px);
+        -webkit-transform: translate(300px, 300px);
         opacity: 0;
     }
     45% {

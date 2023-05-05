@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export default function RequestAPI({ latitude, longitude, search, amountDays, changeData }: any): JSX.Element {
+export  function RequestAPI({ latitude, longitude, search, amountDays, changeData }: any):void {
     // console.log("render request");
 
     const keyAPI = "09b3578ac605cfd2dc02f9694aa1782d";
@@ -13,9 +13,10 @@ export default function RequestAPI({ latitude, longitude, search, amountDays, ch
                 }&lon=${search === "" ? longitude : ""}&appid=${keyAPI}&lang=ru`
             );
             const data = await response.json();
-            // console.log(data);
+    
             changeData(data);
         } catch {
+            changeData('error');
             console.log("error");
         }
     }
@@ -23,7 +24,4 @@ export default function RequestAPI({ latitude, longitude, search, amountDays, ch
     useEffect((): void => {
         request();
     }, [latitude, longitude, amountDays, search]);
-    // console.log(latitude, longitude, search, amountDays);
-
-    return <></>;
 }

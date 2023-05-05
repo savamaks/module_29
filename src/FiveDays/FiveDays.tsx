@@ -4,7 +4,7 @@ import arrow from "../icons/стрелка.png";
 import NextDay from "../NextDays/NextDay";
 import { useState } from "react";
 import FullDay from "../FullDay/FullDay";
-
+import Loader from "../Loader/Loader";
 
 
 export default function FiveDay({ data }: any): JSX.Element {
@@ -14,18 +14,15 @@ export default function FiveDay({ data }: any): JSX.Element {
     let arrFourDay: Array<object> = [];
     let arrFiveDay: Array<object> = [];
     let arrSixDay: Array<object> = [];
-    let arrSevenDay: Array<object> = [];
-    const [ret, setRet] = useState(arrOneDay);
+    const [arrFullDay, setarrFullDay] = useState(arrOneDay);
 
     
-    
-
     const fullWeatherDay = (arr: any): void => {
-        setRet(arr);
+        setarrFullDay(arr);
     };
 
     if (!data.list) {
-        return <div></div>;
+        return <Loader/>
     }
     let arrTime =[data.city.timezone, data.city.sunrise, data.city.sunset]
 // console.log(data.city.timezone, data.city.sunrise,data.city.sunset)
@@ -38,7 +35,6 @@ export default function FiveDay({ data }: any): JSX.Element {
         let four = new Date((startDate + 86400 * 3) * 1000).toLocaleDateString().slice(0, 2);
         let five = new Date((startDate + 86400 * 4) * 1000).toLocaleDateString().slice(0, 2);
         let six = new Date((startDate + 86400 * 5) * 1000).toLocaleDateString().slice(0, 2);
-        let seven = new Date((startDate + 86400 * 6) * 1000).toLocaleDateString().slice(0, 2);
 
         if (el.dt_txt.slice(8, 10) === one) {
             arrOneDay.push(el);
@@ -52,11 +48,9 @@ export default function FiveDay({ data }: any): JSX.Element {
             arrFiveDay.push(el);
         } else if (el.dt_txt.slice(8, 10) === six) {
             arrSixDay.push(el);
-        } else if (el.dt_txt.slice(8, 10) === seven) {
-            arrSevenDay.push(el);
-        }
+        } 
     });
-
+console.log('object');
 
     return (
         <>
@@ -69,7 +63,7 @@ export default function FiveDay({ data }: any): JSX.Element {
                 <NextDay arr={arrFiveDay} onClick={fullWeatherDay} />
                 {arrSixDay[0]&&<NextDay arr={arrSixDay} onClick={fullWeatherDay} />}
             </div>
-            <FullDay arrTime={arrTime} arr={ret}/>
+            <FullDay arrTime={arrTime} arr={arrFullDay}/>
         </>
     );
 }

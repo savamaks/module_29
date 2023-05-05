@@ -5,10 +5,11 @@ import sunset from "../icons/icons8-закат-солнца-48.png";
 import wind from "../icons/free-icon-wind-7682452.png";
 import humidity from "../icons/free-icon-drop-6566228.png";
 import arrow from "../icons/стрелка.png";
+import Loader from "../Loader/Loader";
 
 export default function OneDay({ data }: any): JSX.Element {
     if (!data.name) {
-        return <div>Загрузка данныч</div>;
+        return <Loader/>
     }
     let imgUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     let temp = Math.round(data.main.temp);
@@ -26,7 +27,9 @@ export default function OneDay({ data }: any): JSX.Element {
                     <p title="Температура" className={style.weather__box_temp}>
                         {temp} °C
                     </p>
-                    <p  className={style.weather__text} title="Температура восприятия">Ощущается как {temFeelsLike} °C</p>
+                    <p className={style.weather__text} title="Температура восприятия">
+                        Ощущается как {temFeelsLike} °C
+                    </p>
                 </div>
                 <div className={style.weather__box_block}>
                     <p className={style.weather__text}>Влажность воздуха {data.main.humidity}%</p>
@@ -41,7 +44,7 @@ export default function OneDay({ data }: any): JSX.Element {
                 </div>
                 <div className={style.weather__box}>
                     <div title="Время восхода ">
-                        <p >{new Date(data.sys.sunrise * 1000 + data.timezone).toLocaleTimeString().slice(0, 5)}</p>
+                        <p>{new Date(data.sys.sunrise * 1000 + data.timezone).toLocaleTimeString().slice(0, 5)}</p>
                         <img src={sunrise} alt="" />
                     </div>
                     <div title="Время заката ">
