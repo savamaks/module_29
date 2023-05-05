@@ -1,6 +1,6 @@
-import style from './style.module.scss'
+import style from "./style.module.scss";
 
-export default function Loader():JSX.Element {
+const Loader = (): JSX.Element => {
     return (
         <div className={style.box}>
             <div className={style.box__animate}></div>
@@ -14,4 +14,5 @@ export default function Loader():JSX.Element {
             <div className={style.box__animate}></div>
         </div>
     );
-}
+};
+export default Loader;

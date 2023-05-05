@@ -2,19 +2,6 @@ $font-size-title: 20px;
 $font-size-temp: 25px;
 $font-family: "Inter", sans-serif;
 
-.data {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-.div {
-    width: 500px;
-    height: 300px;
-    background-color: aqua;
-}
-
 .weather {
     width: 97%;
     font-family: $font-family;

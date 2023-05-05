@@ -7,7 +7,8 @@ import humidity from "../icons/free-icon-drop-6566228.png";
 import arrow from "../icons/стрелка.png";
 import Loader from "../Loader/Loader";
 
-export default function OneDay({ data }: any): JSX.Element {
+const OneDay=({ data }: any): JSX.Element =>{
+    // проверка те ли данные пришли если нет то выскакивает лоадер
     if (!data.name) {
         return <Loader/>
     }
@@ -56,3 +57,4 @@ export default function OneDay({ data }: any): JSX.Element {
         </>
     );
 }
+export default OneDay

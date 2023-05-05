@@ -1,7 +1,8 @@
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import style from "./style.module.scss";
-// import "./style.module.scss";
 
+
+// массив для замены числа месяца на название
 const arrMounth: Array<string> = [
     "января",
     "февраля",
@@ -17,6 +18,7 @@ const arrMounth: Array<string> = [
     "декабря",
 ];
 
+//корректировка даты и замена на название месяца
 const dateCorrect = (date: string): string => {
     let count: string | number = "";
     let newDate = date.slice(5, 10).split("-").join(" ").split(" ");
@@ -34,24 +36,28 @@ const dateCorrect = (date: string): string => {
     return newDate.reverse().join(" ");
 };
 
-export default function NextDay({ arr, onClick }: any): JSX.Element {
+
+const NextDay = ({ arr, onClick }: any): JSX.Element => {
     let dateWeather;
     dateWeather = dateCorrect(arr[0].dt_txt);
     let imgUrl = `https://openweathermap.org/img/wn/${arr[0].weather[0].icon}@2x.png`;
     let temp = Math.round(arr[0].main.temp);
     const [flag, setFlag] = useState("");
 
-    const fullWeatherDay = (e :any): void => {
+    // при наведении на элемент, внизу разворачивается погода на этот день по времени
+    //удаляются все активные классы 
+    //добавляется клас на выбранный элемент
+    const fullWeatherDay = (e: any): void => {
         onClick(arr);
         e.preventDefault();
         e.target.parentElement.querySelectorAll(`.${style.active}`).forEach((element: HTMLElement): void => {
             element.classList.remove(`${style.active}`);
         });
         e.target.classList.add(`${style.active}`);
-        
     };
 
-    useEffect(():void  => {
+    //при переключение на 5 дней добавляется класс на первый элемент
+    useEffect((): void => {
         document.querySelector(`.${style.weather}`)?.classList.add(`${style.active}`);
     }, [flag]);
 
@@ -70,4 +76,5 @@ export default function NextDay({ arr, onClick }: any): JSX.Element {
             </div>
         </div>
     );
-}
+};
+export default NextDay;

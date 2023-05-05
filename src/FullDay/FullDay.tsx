@@ -1,16 +1,15 @@
 import style from "./style.module.scss";
 import arrow from "../icons/стрелка.png";
-import sunset from '../icons/icons8-закат-солнца-48.png'
-import sunrise from '../icons/icons8-восход-48.png'
+import sunset from "../icons/icons8-закат-солнца-48.png";
+import sunrise from "../icons/icons8-восход-48.png";
 
 const timeCorrect = (time: string): string => {
     return time.split("-").join(" ").split(" ").join(" ").slice(11, 16);
 };
 
-export default function FullDay({arrTime, arr }: any): JSX.Element {
-console.log('full');
+const FullDay = ({ arrTime, arr }: any): JSX.Element => {
+    console.log(arr);
     const e = arr.map((el: any): JSX.Element => {
-
         let time = timeCorrect(el.dt_txt);
         let temp = Math.round(el.main.temp);
         let temFeelsLike = Math.round(el.main.feels_like);
@@ -56,4 +55,5 @@ console.log('full');
         );
     });
     return <div className={style.weather}>{e}</div>;
-}
+};
+export default FullDay;

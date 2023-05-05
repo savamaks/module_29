@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import style from "./style.module.scss";
 
-export default function ButtonDays({ onSelect }: any): JSX.Element {
+const ButtonDays = ({ onSelect }: any): JSX.Element => {
     const [flag, setFlag] = useState("");
 
     const week = (e: any): void => {
@@ -22,9 +22,8 @@ export default function ButtonDays({ onSelect }: any): JSX.Element {
         e.target.classList.add(`${style.active}`);
     };
 
-    useEffect(():void => {
+    useEffect((): void => {
         document.querySelector(`.${style.box__button}`)?.classList.add(`${style.active}`);
-
     }, [flag]);
 
     return (
@@ -37,4 +36,5 @@ export default function ButtonDays({ onSelect }: any): JSX.Element {
             </button>
         </div>
     );
-}
+};
+export default ButtonDays;

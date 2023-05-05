@@ -1,31 +1,35 @@
 import React from "react";
 import style from "./style.module.scss";
-import arrow from "../icons/стрелка.png";
 import NextDay from "../NextDays/NextDay";
 import { useState } from "react";
 import FullDay from "../FullDay/FullDay";
 import Loader from "../Loader/Loader";
 
-
-export default function FiveDay({ data }: any): JSX.Element {
+const FiveDay = ({ data }: any): JSX.Element => {
     let arrOneDay: Array<object> = [];
     let arrTwoDay: Array<object> = [];
     let arrThreeDay: Array<object> = [];
     let arrFourDay: Array<object> = [];
     let arrFiveDay: Array<object> = [];
     let arrSixDay: Array<object> = [];
-    const [arrFullDay, setarrFullDay] = useState(arrOneDay);
+    const [arrFullDay, setArrFullDay] = useState(arrOneDay);
+   
+    // проверка те ли данные пришли если нет то выскакивает лоадер
+    if (!data.list) {
+        return <Loader />;
+    }
 
     
+
+    // добавляет массив с данными о погоде на день который выбран  
     const fullWeatherDay = (arr: any): void => {
-        setarrFullDay(arr);
+        setArrFullDay(arr);
     };
 
-    if (!data.list) {
-        return <Loader/>
-    }
-    let arrTime =[data.city.timezone, data.city.sunrise, data.city.sunset]
-// console.log(data.city.timezone, data.city.sunrise,data.city.sunset)
+    //время восхода и заката солнца
+    let arrTime = [data.city.timezone, data.city.sunrise, data.city.sunset];
+
+    // разбиение данных на дни 
     data.list.map((el: any): void => {
         let startDate = data.list[0].dt;
 
@@ -36,6 +40,7 @@ export default function FiveDay({ data }: any): JSX.Element {
         let five = new Date((startDate + 86400 * 4) * 1000).toLocaleDateString().slice(0, 2);
         let six = new Date((startDate + 86400 * 5) * 1000).toLocaleDateString().slice(0, 2);
 
+        // условия разбиения данных на дни
         if (el.dt_txt.slice(8, 10) === one) {
             arrOneDay.push(el);
         } else if (el.dt_txt.slice(8, 10) === two) {
@@ -48,9 +53,8 @@ export default function FiveDay({ data }: any): JSX.Element {
             arrFiveDay.push(el);
         } else if (el.dt_txt.slice(8, 10) === six) {
             arrSixDay.push(el);
-        } 
+        }
     });
-console.log('object');
 
     return (
         <>
@@ -61,9 +65,10 @@ console.log('object');
                 <NextDay arr={arrThreeDay} onClick={fullWeatherDay} />
                 <NextDay arr={arrFourDay} onClick={fullWeatherDay} />
                 <NextDay arr={arrFiveDay} onClick={fullWeatherDay} />
-                {arrSixDay[0]&&<NextDay arr={arrSixDay} onClick={fullWeatherDay} />}
+                {arrSixDay[0] && <NextDay arr={arrSixDay} onClick={fullWeatherDay} />}
             </div>
-            <FullDay arrTime={arrTime} arr={arrFullDay}/>
+            <FullDay arrTime={arrTime} arr={arrFullDay} />
         </>
     );
-}
+};
+export default FiveDay;
