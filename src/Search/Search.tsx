@@ -4,12 +4,15 @@ import search from "../icons/search.svg";
 import { BaseSyntheticEvent, SyntheticEvent, useState } from "react";
 
 const Search = ({ onSearch, initGeo }: any): JSX.Element => {
+    console.log('render search');
     const [valueInput, setValueInput] = useState("");
 
+    //введенные данные сохраняются в переменную
     const initInput = (e: BaseSyntheticEvent): void => {
         e.preventDefault();
         setValueInput(e.target.value);
     };
+    //обработка клика на кнопку поиск по названию города
     const clickButtonSearch = (e: SyntheticEvent): void => {
         e.preventDefault();
         if (valueInput === "") return;
@@ -18,6 +21,7 @@ const Search = ({ onSearch, initGeo }: any): JSX.Element => {
         initGeo(0, 0);
         setValueInput("");
     };
+    //обработка клика на кнопку поиска по геопозиции
     const clickButtonGeo = (e: SyntheticEvent): void => {
         e.preventDefault();
         if ("geolocation" in navigator) {
@@ -32,6 +36,8 @@ const Search = ({ onSearch, initGeo }: any): JSX.Element => {
 
     // Функция, срабатывающая при успешном получении геолокации
     const success = (position: GeolocationPosition): void => {
+        // console.log('btn y');
+
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         initGeo(latitude, longitude);

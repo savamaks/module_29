@@ -20,6 +20,8 @@ const arrMounth: Array<string> = [
 
 //корректировка даты и замена на название месяца
 const dateCorrect = (date: string): string => {
+
+    console.log('render next');
     let count: string | number = "";
     let newDate = date.slice(5, 10).split("-").join(" ").split(" ");
 

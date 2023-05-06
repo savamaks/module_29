@@ -3,12 +3,14 @@ import arrow from "../icons/стрелка.png";
 import sunset from "../icons/icons8-закат-солнца-48.png";
 import sunrise from "../icons/icons8-восход-48.png";
 
+
+// корректирует время для отображение в развернутом прогнозе на день
 const timeCorrect = (time: string): string => {
     return time.split("-").join(" ").split(" ").join(" ").slice(11, 16);
 };
 
 const FullDay = ({ arrTime, arr }: any): JSX.Element => {
-    console.log(arr);
+    console.log('full day');
     const e = arr.map((el: any): JSX.Element => {
         let time = timeCorrect(el.dt_txt);
         let temp = Math.round(el.main.temp);
@@ -42,11 +44,11 @@ const FullDay = ({ arrTime, arr }: any): JSX.Element => {
                     <img style={{ transform: ` rotate(${el.wind.deg}deg)` }} className={style.weather__compass_arrow} src={arrow} alt="" />
                 </div>
                 <div className={style.weather__box}>
-                    <div title="Время восхода ">
+                    <div className={style.weather__box_sunset} title="Время восхода ">
                         <p>{new Date(arrTime[1] * 1000 + arrTime[0]).toLocaleTimeString().slice(0, 5)}</p>
                         <img src={sunrise} alt="" />
                     </div>
-                    <div title="Время заката ">
+                    <div className={style.weather__box_sunset} title="Время заката ">
                         <p>{new Date(arrTime[2] * 1000 + arrTime[0]).toLocaleTimeString().slice(0, 5)}</p>
                         <img src={sunset} alt="" />
                     </div>

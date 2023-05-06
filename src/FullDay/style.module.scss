@@ -42,13 +42,20 @@ $font-family: "Inter", sans-serif;
         }
         &_block {
             width: 190px;
-
             display: flex;
             gap: 10px;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
+        &_sunset{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
     }
     &__text {
         font-size: 14px;
