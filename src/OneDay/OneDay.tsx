@@ -1,11 +1,11 @@
 import React from "react";
 import style from "./style.module.scss";
+// import  '../style/variables.module.scss'
 import sunrise from "../icons/icons8-восход-48.png";
 import sunset from "../icons/icons8-закат-солнца-48.png";
-import wind from "../icons/free-icon-wind-7682452.png";
-import humidity from "../icons/free-icon-drop-6566228.png";
 import arrow from "../icons/стрелка.png";
 import Loader from "../Loader/Loader";
+
 
 const OneDay=({ data }: any): JSX.Element =>{
     // проверка те ли данные пришли если нет то выскакивает лоадер

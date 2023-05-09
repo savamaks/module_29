@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
 
 
-$font-size-title: 20px;
-$font-family: "Inter", sans-serif;
-
+@import '../style/variables';
 
 .title{
+    color: $color-main-text;
+
     margin: 20px;
     font-size: $font-size-title;
     font-weight: 600;

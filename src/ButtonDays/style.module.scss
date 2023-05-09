@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
-
-$font-family: "Inter", sans-serif;
+@import "../style/variables";
 
 .box {
     font-family: $font-family;
@@ -11,9 +9,9 @@ $font-family: "Inter", sans-serif;
         position: relative;
         width: max-content;
         font-size: 20px;
-        
+
         padding: 5px 10px;
-        color: gray;
+        color: $color-text-button;
         text-transform: uppercase;
 
         &::after,
@@ -31,8 +29,8 @@ $font-family: "Inter", sans-serif;
             -moz-transition: 0.3s;
             -ms-transition: 0.3s;
             -o-transition: 0.3s;
-}
-       
+        }
+
         &.active {
             color: #020202;
             &::after,

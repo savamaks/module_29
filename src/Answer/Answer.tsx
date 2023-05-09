@@ -27,6 +27,7 @@ const Answer = ({data,amountDays}:any): JSX.Element => {
 
         return <FiveDay data={data} separationArr={separationArr} />;
     } else {
+        
         return <Error />;
     }
 };

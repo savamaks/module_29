@@ -1,8 +1,8 @@
-$font-size-title: 20px;
-$font-size-temp: 25px;
-$font-family: "Inter", sans-serif;
+@import '../style/variables';
 
 .weather {
+    color: $color-main-text;
+
     width: 97%;
     font-family: $font-family;
     font-size: 15px;
@@ -10,7 +10,7 @@ $font-family: "Inter", sans-serif;
     gap: 10px;
     flex-direction: column;
     //width: max-content;
-    background-color: rgb(232, 245, 253);
+    background-color:$background-color-active;
     padding: 40px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -59,7 +59,7 @@ $font-family: "Inter", sans-serif;
     }
     &__text {
         font-size: 14px;
-        color: rgb(77, 77, 77);
+        color: $color-text-description;
     }
     &__compass {
         display: flex;

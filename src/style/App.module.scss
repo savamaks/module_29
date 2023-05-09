@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
 
-$font-family: "Inter", sans-serif;
+@import "../style/variables";
 
 * {
     margin: 0;
@@ -9,10 +9,9 @@ $font-family: "Inter", sans-serif;
 }
 
 .app {
-    
     display: flex;
     justify-content: center;
-    background-color: rgb(214, 215, 219);
+    background-color: $background-app;
     min-height: 100vh;
 }
 .widget {
@@ -25,8 +24,8 @@ $font-family: "Inter", sans-serif;
     align-items: center;
     width: 95%;
     width: 1440px;
-    height:100%;
-    background-color: rgb(247, 246, 249);
+    height: 100%;
+    background-color: $background-widget;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -34,7 +33,7 @@ $font-family: "Inter", sans-serif;
     -o-border-radius: 20px;
     padding: 30px;
 }
-.box{
+.box {
     display: flex;
     align-items: center;
     justify-content: center;

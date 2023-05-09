@@ -1,9 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
-
-$font-size-title: 20px;
-$font-size-temp: 25px;
-$font-family: "Inter", sans-serif;
-
+@import "../style/variables";
 .data {
     display: flex;
     justify-content: center;
@@ -11,13 +6,9 @@ $font-family: "Inter", sans-serif;
     gap: 20px;
     flex-wrap: wrap;
 }
-.div {
-    width: 300px;
-    height: 300px;
-    background-color: aqua;
-}
 
 .weather {
+    color: $color-main-text;
     width: 97%;
     font-family: $font-family;
     font-size: 15px;
@@ -88,4 +79,3 @@ $font-family: "Inter", sans-serif;
         }
     }
 }
-

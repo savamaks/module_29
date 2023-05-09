@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./style/normolize.scss";
-import "./style/variables.scss";
 import style from "./style/App.module.scss";
 import Search from "./Search/Search";
 import requestAPI from "./RequestAPI/requestAPI";
@@ -51,6 +50,7 @@ const App = (): JSX.Element => {
                     <ButtonDays onSelect={selectAmountDays} />
                 </div>
                 <Answer data={data} amountDays={amountDays} />
+                
             </div>
         </div>
     );
