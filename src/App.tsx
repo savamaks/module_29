@@ -5,6 +5,7 @@ import Search from "./Search/Search";
 import requestAPI from "./RequestAPI/requestAPI";
 import ButtonDays from "./ButtonDays/ButtonDays";
 import Answer from "./Answer/Answer";
+import ToggleThems from "./ToggleThems/ToggleThems"; 
 
 const App = (): JSX.Element => {
     console.log("render app");
@@ -48,6 +49,7 @@ const App = (): JSX.Element => {
                 <div className={style.box}>
                     <Search onSearch={initSearch} initGeo={initGeo} />
                     <ButtonDays onSelect={selectAmountDays} />
+                    <ToggleThems/>
                 </div>
                 <Answer data={data} amountDays={amountDays} />
                 
