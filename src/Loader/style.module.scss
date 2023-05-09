@@ -1,4 +1,5 @@
 @import '../style/variables';
+@import '..//style/variables';
 
 .box {
     display: grid;
@@ -9,7 +10,7 @@
         width: 20px;
         height: 20px;
         border-radius: 10%;
-        background-color: gray;
+        background:$background-loader;
         -webkit-border-radius: 10%;
         -moz-border-radius: 10%;
         -ms-border-radius: 10%;
@@ -17,40 +18,40 @@
         opacity: 0;
         &:nth-child(1) 
 {
-            animation: anim $anim-time infinite;
-            -webkit-animation: anim $anim-time infinite;
+            animation: anim $anim-time-loader infinite;
+            -webkit-animation: anim $anim-time-loader infinite;
         }
         &:nth-child(2) {
-            animation: anim2 $anim-time infinite;
-            -webkit-animation: anim2 $anim-time infinite;
+            animation: anim2 $anim-time-loader infinite;
+            -webkit-animation: anim2 $anim-time-loader infinite;
         }
         &:nth-child(3) {
-            animation: anim3 $anim-time infinite;
-            -webkit-animation: anim3 $anim-time infinite;
+            animation: anim3 $anim-time-loader infinite;
+            -webkit-animation: anim3 $anim-time-loader infinite;
         }
         &:nth-child(4) {
-            animation: anim4 $anim-time infinite;
-            -webkit-animation: anim4 $anim-time infinite;
+            animation: anim4 $anim-time-loader infinite;
+            -webkit-animation: anim4 $anim-time-loader infinite;
         }
         &:nth-child(5) {
-            animation: anim5 $anim-time infinite;
-            -webkit-animation: anim5 $anim-time infinite;
+            animation: anim5 $anim-time-loader infinite;
+            -webkit-animation: anim5 $anim-time-loader infinite;
         }
         &:nth-child(6) {
-            animation: anim6 $anim-time infinite;
-            -webkit-animation: anim6 $anim-time infinite;
+            animation: anim6 $anim-time-loader infinite;
+            -webkit-animation: anim6 $anim-time-loader infinite;
         }
         &:nth-child(7) {
-            animation: anim7 $anim-time infinite;
-            -webkit-animation: anim7 $anim-time infinite;
+            animation: anim7 $anim-time-loader infinite;
+            -webkit-animation: anim7 $anim-time-loader infinite;
         }
         &:nth-child(8) {
-            animation: anim8 $anim-time infinite;
-            -webkit-animation: anim8 $anim-time infinite;
+            animation: anim8 $anim-time-loader infinite;
+            -webkit-animation: anim8 $anim-time-loader infinite;
         }
         &:nth-child(9) {
-            animation: anim9 $anim-time infinite;
-            -webkit-animation: anim9 $anim-time infinite;
+            animation: anim9 $anim-time-loader infinite;
+            -webkit-animation: anim9 $anim-time-loader infinite;
         }
     }
 }

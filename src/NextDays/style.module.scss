@@ -13,7 +13,7 @@
     width: max-content;
     min-width: 200px;
     height: max-content;
-    background-color: white;
+    background: $background-day;
     padding: 15px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -27,7 +27,7 @@
     -o-transition: all 0.3s ease;
 
     &.active {
-        background-color:$background-color-active;
+        background:$background-active;
         transform: scale(1.05);
         -webkit-transform: scale(1.05);
         -moz-transform: scale(1.05);
