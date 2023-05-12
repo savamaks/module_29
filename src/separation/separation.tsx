@@ -1,6 +1,5 @@
 const separation = (data: any): object => {
-    console.log("render separ");
-
+    
     let arrOneDay: Array<object> = [];
     let arrTwoDay: Array<object> = [];
     let arrThreeDay: Array<object> = [];
@@ -10,7 +9,8 @@ const separation = (data: any): object => {
 
     // разбиение данных на прогноз по дням
     data.list.map((el: any): void => {
-        let startDate = data.list[0].dt;
+        let startDate = Date.parse(data.list[0].dt_txt) / 1000;
+
         let one = new Date(startDate * 1000).toLocaleDateString().slice(0, 2);
         let two = new Date((startDate + 86400) * 1000).toLocaleDateString().slice(0, 2);
         let three = new Date((startDate + 86400 * 2) * 1000).toLocaleDateString().slice(0, 2);
@@ -33,7 +33,6 @@ const separation = (data: any): object => {
             arrSixDay.push(el);
         }
     });
-
     if (arrSixDay[0] === undefined) {
         return [arrOneDay, arrTwoDay, arrThreeDay, arrFourDay, arrFiveDay];
     } else {

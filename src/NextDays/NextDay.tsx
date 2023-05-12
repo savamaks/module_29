@@ -1,4 +1,4 @@
-import { SyntheticEvent, useEffect, useRef, useState } from "react";
+import {  useEffect} from "react";
 import style from "./style.module.scss";
 
 // массив для замены числа месяца на название
@@ -21,7 +21,7 @@ const arrMounth: Array<string> = [
 const dateCorrect = (date: string): string => {
     let count: string | number = "";
     let newDate = date.slice(5, 10).split("-").join(" ").split(" ");
-
+    
     for (let index = 0; index < arrMounth.length + 1; index++) {
         if (index <= 9) {
             count = "0" + index;
@@ -37,7 +37,6 @@ const dateCorrect = (date: string): string => {
 
 const NextDay = ({ arr, onClick }: any): JSX.Element => {
 
-    const [flag, setFlag] = useState("");
     let dateWeather:string;
     dateWeather = dateCorrect(arr[0].dt_txt);
     let imgUrl = `https://openweathermap.org/img/wn/${arr[0].weather[0].icon}@2x.png`;
@@ -67,7 +66,7 @@ const NextDay = ({ arr, onClick }: any): JSX.Element => {
     //при переключение на 5 дней добавляется класс на первый элемент
     useEffect((): void => {
         document.querySelector(`.${style.weather}`)?.classList.add(`${style.active}`);
-    }, [flag]);
+    }, []);
 
     return (
         <div key={arr[0].dt_txt} className={style.weather} onMouseEnter={fullWeatherDay}>

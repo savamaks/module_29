@@ -5,7 +5,6 @@ import { BaseSyntheticEvent, SyntheticEvent, useState } from "react";
 
 const Search = ({ onSearch, initGeo }: any): JSX.Element => {
 
-    console.log('render search');
     const [valueInput, setValueInput] = useState("");
     const [errorGeo, setErrorGeo] = useState("");
 

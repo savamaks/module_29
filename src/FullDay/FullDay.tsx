@@ -10,7 +10,6 @@ const timeCorrect = (time: string): string => {
 };
 
 const FullDay = ({ arrTime, arr }: any): JSX.Element => {
-    console.log("render full");
     const e = arr.map((el: any): JSX.Element => {
         
         let time = timeCorrect(el.dt_txt);
