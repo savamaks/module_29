@@ -7,13 +7,13 @@ import ButtonDays from "./ButtonDays/ButtonDays";
 import Answer from "./Answer/Answer";
 
 const App = (): JSX.Element => {
-    console.log("render app");
+    console.log('render app');
     const keyAPI = "09b3578ac605cfd2dc02f9694aa1782d";
     const [search, setSearch] = useState("");
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
     const [amountDays, setAmountDays] = useState("weather");
-    const [data, setData]: any = useState("");
+    const [data, setData]: Array<any> = useState("");
 
     //значение поисковой строки
     const initSearch = (value: string): void => {
@@ -22,7 +22,6 @@ const App = (): JSX.Element => {
 
     //значение геопозиции
     const initGeo = (latitude: number, longitude: number): void => {
-        console.log("but");
         setLatitude(latitude);
         setLongitude(longitude);
     };
@@ -39,7 +38,12 @@ const App = (): JSX.Element => {
     // запуск запроса к серверу
 
     useEffect((): void => {
-        requestAPI(keyAPI, latitude, longitude, search, amountDays, changeData);
+
+        if ((latitude !== 0 && longitude !== 0) || search !== "") {
+            console.log('render req');
+
+            requestAPI(keyAPI, latitude, longitude, search, amountDays, changeData);
+        }
     }, [latitude, longitude, search, amountDays]);
 
     return (
@@ -48,10 +52,8 @@ const App = (): JSX.Element => {
                 <div className={style.box}>
                     <Search onSearch={initSearch} initGeo={initGeo} />
                     <ButtonDays onSelect={selectAmountDays} />
-                    
                 </div>
                 <Answer data={data} amountDays={amountDays} />
-                
             </div>
         </div>
     );

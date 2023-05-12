@@ -6,11 +6,10 @@ import sunset from "../icons/icons8-закат-солнца-48.png";
 import arrow from "../icons/стрелка.png";
 import Loader from "../Loader/Loader";
 
-
-const OneDay=({ data }: any): JSX.Element =>{
+const OneDay = ({ data }: any): JSX.Element => {
     // проверка те ли данные пришли если нет то выскакивает лоадер
     if (!data.name) {
-        return <Loader/>
+        return <Loader />;
     }
     let imgUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     let temp = Math.round(data.main.temp);
@@ -45,16 +44,16 @@ const OneDay=({ data }: any): JSX.Element =>{
                 </div>
                 <div className={style.weather__box}>
                     <div title="Время восхода ">
-                        <p>{new Date(data.sys.sunrise * 1000 + data.timezone).toLocaleTimeString().slice(0, 5)}</p>
+                        <p>{new Date((data.sys.sunrise + data.timezone - 10800) * 1000).toLocaleTimeString().slice(0, 5)}</p>
                         <img src={sunrise} alt="" />
                     </div>
                     <div title="Время заката ">
-                        <p>{new Date(data.sys.sunset * 1000 + data.timezone).toLocaleTimeString().slice(0, 5)}</p>
+                        <p>{new Date((data.sys.sunset + data.timezone - 10800) * 1000).toLocaleTimeString().slice(0, 5)}</p>
                         <img src={sunset} alt="" />
                     </div>
                 </div>
             </div>
         </>
     );
-}
-export default OneDay
+};
+export default OneDay;

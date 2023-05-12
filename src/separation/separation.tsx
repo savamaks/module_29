@@ -1,5 +1,5 @@
 const separation = (data: any): object => {
-    console.log('render separator');
+    console.log("render separ");
 
     let arrOneDay: Array<object> = [];
     let arrTwoDay: Array<object> = [];
@@ -34,6 +34,10 @@ const separation = (data: any): object => {
         }
     });
 
-    return [arrOneDay, arrTwoDay, arrThreeDay, arrFourDay, arrFiveDay, arrSixDay];
+    if (arrSixDay[0] === undefined) {
+        return [arrOneDay, arrTwoDay, arrThreeDay, arrFourDay, arrFiveDay];
+    } else {
+        return [arrOneDay, arrTwoDay, arrThreeDay, arrFourDay, arrFiveDay, arrSixDay];
+    }
 };
-export default separation
+export default separation;

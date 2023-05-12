@@ -15,6 +15,7 @@
     min-height: 100vh;
 }
 .widget {
+    position: relative;
     $font-family: $font-family;
     position: relative;
     margin: 10px auto;

@@ -25,9 +25,10 @@
     -moz-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
+    box-shadow:  5px 1px 7px $color-shadow;
 
     &.active {
-        background:$background-active;
+        background:$background-active-day;
         transform: scale(1.05);
         -webkit-transform: scale(1.05);
         -moz-transform: scale(1.05);

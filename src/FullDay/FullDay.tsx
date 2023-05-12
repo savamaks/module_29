@@ -10,13 +10,15 @@ const timeCorrect = (time: string): string => {
 };
 
 const FullDay = ({ arrTime, arr }: any): JSX.Element => {
-    console.log('full day');
+    console.log("render full");
     const e = arr.map((el: any): JSX.Element => {
+        
         let time = timeCorrect(el.dt_txt);
         let temp = Math.round(el.main.temp);
         let temFeelsLike = Math.round(el.main.feels_like);
         let imgUrl = `https://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png`;
         let pressure = Math.trunc((el.main.pressure / 133.3) * 100);
+        
         return (
             <div key={el.dt} className={style.weather__box}>
                 <h2 className={style.weather__box_time}>{time}</h2>
@@ -45,11 +47,11 @@ const FullDay = ({ arrTime, arr }: any): JSX.Element => {
                 </div>
                 <div className={style.weather__box}>
                     <div className={style.weather__box_sunset} title="Время восхода ">
-                        <p>{new Date(arrTime[1] * 1000 + arrTime[0]).toLocaleTimeString().slice(0, 5)}</p>
+                        <p>{new Date((arrTime[1]+ arrTime[0]-10800) * 1000).toLocaleTimeString().slice(0, 5)}</p>
                         <img src={sunrise} alt="" />
                     </div>
                     <div className={style.weather__box_sunset} title="Время заката ">
-                        <p>{new Date(arrTime[2] * 1000 + arrTime[0]).toLocaleTimeString().slice(0, 5)}</p>
+                        <p>{new Date((arrTime[2] + arrTime[0]-10800) * 1000).toLocaleTimeString().slice(0, 5)}</p>
                         <img src={sunset} alt="" />
                     </div>
                 </div>

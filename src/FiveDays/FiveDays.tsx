@@ -22,17 +22,13 @@ const FiveDay = ({ data, separationArr }: any): JSX.Element => {
 
     //время восхода и заката солнца
     let arrTime = [data.city.timezone, data.city.sunrise, data.city.sunset];
-
     return (
         <>
             <h2 className={style.weather__title}>{data.city.name}</h2>
             <div className={style.data}>
-                <NextDay arr={separationArr[0]} onClick={fullWeatherDay} />
-                <NextDay arr={separationArr[1]} onClick={fullWeatherDay} />
-                <NextDay arr={separationArr[2]} onClick={fullWeatherDay} />
-                <NextDay arr={separationArr[3]} onClick={fullWeatherDay} />
-                <NextDay arr={separationArr[4]} onClick={fullWeatherDay} />
-                {separationArr[5] && <NextDay arr={separationArr[5]} onClick={fullWeatherDay} />}
+                {separationArr.map((element: void): JSX.Element => {
+                    return <NextDay arr={element} onClick={fullWeatherDay} />;
+                })}
             </div>
             <FullDay arrTime={arrTime} arr={arrFullDay} />
         </>

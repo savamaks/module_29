@@ -1,7 +1,6 @@
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import style from "./style.module.scss";
 
-
 // массив для замены числа месяца на название
 const arrMounth: Array<string> = [
     "января",
@@ -20,8 +19,6 @@ const arrMounth: Array<string> = [
 
 //корректировка даты и замена на название месяца
 const dateCorrect = (date: string): string => {
-
-    console.log('render next');
     let count: string | number = "";
     let newDate = date.slice(5, 10).split("-").join(" ").split(" ");
 
@@ -38,16 +35,25 @@ const dateCorrect = (date: string): string => {
     return newDate.reverse().join(" ");
 };
 
-
 const NextDay = ({ arr, onClick }: any): JSX.Element => {
-    let dateWeather;
+
+    const [flag, setFlag] = useState("");
+    let dateWeather:string;
     dateWeather = dateCorrect(arr[0].dt_txt);
     let imgUrl = `https://openweathermap.org/img/wn/${arr[0].weather[0].icon}@2x.png`;
-    let temp = Math.round(arr[0].main.temp);
-    const [flag, setFlag] = useState("");
+    
+    //расчет максимальной температуры за день
+    let maxTemp = arr[0].main.temp;
+    arr.map((el: any):void => {
+        if( maxTemp < el.main.temp){
+            maxTemp = el.main.temp;
+        }
+    });
+
+    let temp = Math.round(maxTemp);
 
     // при наведении на элемент, внизу разворачивается погода на этот день по времени
-    //удаляются все активные классы 
+    //удаляются все активные классы
     //добавляется клас на выбранный элемент
     const fullWeatherDay = (e: any): void => {
         onClick(arr);
@@ -64,7 +70,7 @@ const NextDay = ({ arr, onClick }: any): JSX.Element => {
     }, [flag]);
 
     return (
-        <div className={style.weather} onMouseEnter={fullWeatherDay}>
+        <div key={arr[0].dt_txt} className={style.weather} onMouseEnter={fullWeatherDay}>
             <h1 className={style.weather__title}>{dateWeather}</h1>
             <div className={style.weather__box}>
                 <div className={style.weather__box_block}>

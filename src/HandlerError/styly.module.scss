@@ -1,0 +1,30 @@
+@import "../style/variables";
+
+.title {
+    color: $color-main-text;
+    margin: 20px;
+    font-size: $font-size-title;
+    font-weight: 600;
+    font-family: $font-family;
+    align-self: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.block {
+    width: 500px;
+    background-color: rgb(131, 221, 122);
+    padding: 10px 20px;
+    font-family: $font-family;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    box-shadow: 5px 1px 7px $color-shadow;
+    &__text {
+        font-size: $font-size-title;
+
+        text-align: center;
+    }
+}

@@ -1,8 +1,6 @@
-console.log("render request");
 
 // запрос на сервер
 async function requestAPI(keyAPI: string, latitude: number, longitude: number, search: string, amountDays: string, changeData: any): Promise<void> {
-    console.log(latitude,longitude);
     try {
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/${amountDays}?q=${search !== "" ? search : ""}&units=metric&lat=${
@@ -15,7 +13,6 @@ async function requestAPI(keyAPI: string, latitude: number, longitude: number, s
     } catch {
         //данные уходят в компонент app
         changeData("error");
-        console.log("error");
     }
     
 }

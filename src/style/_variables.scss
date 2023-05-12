@@ -8,15 +8,15 @@ $font-size-temp-min: 20px;
 $font-family: "Inter", sans-serif;
 
 $background-day: rgb(255, 255, 255);
-$background-active: rgb(205, 232, 248);
+$background-active-day: rgb(205, 232, 248);
 $background-app: rgb(214, 215, 219);
 $background-widget: rgb(247, 246, 249);
 $background-loader: rgb(128, 128, 128);
 
-$color:red;
-$color:rgb(0, 255, 85);
 $color-text-description: rgb(77, 77, 77);
 $color-text-button: rgb(128, 128, 128);
 $color-main-text: rgb(0, 0, 0);
+
+$color-shadow:rgb(190, 190, 190);
 
 $anim-time-loader: 1.8s;

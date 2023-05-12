@@ -8,6 +8,7 @@
 }
 
 .weather {
+    box-shadow:  5px 1px 7px $color-shadow;
     color: $color-main-text;
     width: 97%;
     font-family: $font-family;
