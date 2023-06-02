@@ -3,6 +3,7 @@
 @import '../style/variables';
 
 .weather {
+    cursor: pointer;
     color: $color-main-text;
     font-family: $font-family;
     font-size: 15px;
@@ -26,6 +27,11 @@
     -ms-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     box-shadow:  5px 1px 7px $color-shadow;
+    z-index: 3;
+    &:hover{
+        transform: scale(1.05);
+
+    }
 
     &.active {
         background:$background-active-day;
