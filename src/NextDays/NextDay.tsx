@@ -69,7 +69,7 @@ const NextDay = ({ arr, onClick }: any): JSX.Element => {
     }, []);
 
     return (
-        <div key={arr[0].dt_txt} className={style.weather} onMouseEnter={fullWeatherDay}>
+        <div key={arr[0].dt_txt} className={style.weather} onClick={fullWeatherDay}>
             <h1 className={style.weather__title}>{dateWeather}</h1>
             <div className={style.weather__box}>
                 <div className={style.weather__box_block}>
