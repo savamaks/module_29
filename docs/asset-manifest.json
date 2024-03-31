@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/module_29/static/css/main.0bac8f7d.css",
+    "main.js": "/module_29/static/js/main.3963043c.js",
+    "static/js/787.7e8d03c6.chunk.js": "/module_29/static/js/787.7e8d03c6.chunk.js",
+    "static/media/kompass-1.png": "/module_29/static/media/kompass-1.bde187f03b84d6976c29.png",
+    "static/media/geolocation.svg": "/module_29/static/media/geolocation.a6e8e64404918d0ce16ed92f8da29769.svg",
+    "index.html": "/module_29/index.html",
+    "static/media/search.svg": "/module_29/static/media/search.8dc2831c225989ebb427ad5b683a2706.svg",
+    "main.0bac8f7d.css.map": "/module_29/static/css/main.0bac8f7d.css.map",
+    "main.3963043c.js.map": "/module_29/static/js/main.3963043c.js.map",
+    "787.7e8d03c6.chunk.js.map": "/module_29/static/js/787.7e8d03c6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0bac8f7d.css",
+    "static/js/main.3963043c.js"
+  ]
+}
