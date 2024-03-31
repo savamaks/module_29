@@ -1,37 +1,30 @@
-import { useEffect, useState } from "react";
+import { MouseEvent, FC } from "react";
 import style from "./style.module.scss";
+import cn from "classnames";
 
-const ButtonDays = ({ onSelect }: any): JSX.Element => {
-    const [flag, setFlag] = useState("");
+interface IProps {
+    setAmountDays: (value: string) => void;
+    amountDays: string;
+}
 
-    const week = (e: any): void => {
+const ButtonDays: FC<IProps> = ({ setAmountDays, amountDays }) => {
+    const week = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        onSelect("forecast");
-        e.target.parentElement.querySelectorAll(`.${style.active}`).forEach((element: HTMLElement): void => {
-            element.classList.remove(`${style.active}`);
-        });
-        e.target.classList.add(`${style.active}`);
+        setAmountDays("forecast");
     };
 
-    const today = (e: any): void => {
+    const today = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        onSelect("weather");
-        e.target.parentElement.querySelectorAll(`.${style.active}`).forEach((element: HTMLElement): void => {
-            element.classList.remove(`${style.active}`);
-        });
-        e.target.classList.add(`${style.active}`);
+        setAmountDays("weather");
     };
 
-    useEffect((): void => {
-        document.querySelector(`.${style.box__button}`)?.classList.add(`${style.active}`);
-    }, [flag]);
 
     return (
         <div className={style.box}>
-            <button className={style.box__button} onClick={today}>
+            <button className={cn(style.box__button, amountDays === "weather" && style.active)} onClick={today}>
                 сегодня
             </button>
-            <button className={style.box__button} onClick={week}>
+            <button className={cn(style.box__button, amountDays === "forecast" && style.active)} onClick={week}>
                 на 5 дней
             </button>
         </div>

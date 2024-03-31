@@ -2,28 +2,36 @@ import OneDay from "../OneDay/OneDay";
 import FiveDay from "../FiveDays/FiveDays";
 import HandlerError from "../HandlerError/HandlerError";
 import Loader from "../Loader/Loader";
-import separation from "../separation/separation";
+import { IArrMain,  IDataOneDay } from "../type";
+import { FC } from "react";
+import separation from "../handlerFunc/separation";
 
-const Answer = ({ data, amountDays}: any): JSX.Element => {
+interface IProps {
+    data: IDataOneDay ;
+    amountDays: string;
+}
+
+const Answer: FC<IProps> = ({ data, amountDays }) => {
+    console.log(data);
     // если нет связи или произошла какаято ошибка
-    if (data === "error") return <HandlerError data={data} />;
+    if (data.error) return <HandlerError data={data} />;
 
     // если неправильно ввели данные запроса
-    if (data.message) return <HandlerError data={data} />;
+    if (data.status !== 200) return <HandlerError data={data} />;
 
     //проверка какой запрос отправлен на 5 дней или на один
-    if (amountDays === "weather" && data !== "") {
+    if (amountDays === "weather" && !data.error ) {
         return <OneDay data={data} />;
-    } else if (amountDays === "forecast" && data !== "") {
+    } else if (amountDays === "forecast" && !data.error) {
         //проверка есть ли нужные данные в массиве
         if (!data.list) return <Loader />;
 
         //запуск функции разделения массива на прогноз по дням
-        let separationArr = separation(data);
+        const separationArr: Array<Array<IArrMain>> = separation(data);
 
         return <FiveDay data={data} separationArr={separationArr} />;
     } else {
-        return <HandlerError />;
+        return <HandlerError data={data} />;
     }
 };
 

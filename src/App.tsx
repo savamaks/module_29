@@ -1,48 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import "./style/normolize.scss";
 import style from "./style/App.module.scss";
 import Search from "./Search/Search";
 import requestAPI from "./RequestAPI/RequestAPI";
 import ButtonDays from "./ButtonDays/ButtonDays";
 import Answer from "./Answer/Answer";
+import { IData } from "./type";
 
-const App = (): JSX.Element => {
-    console.log('render app');
+const App: FC = () => {
     const keyAPI = "09b3578ac605cfd2dc02f9694aa1782d";
-    const [search, setSearch] = useState("");
-    const [latitude, setLatitude] = useState(0);
-    const [longitude, setLongitude] = useState(0);
-    const [amountDays, setAmountDays] = useState("weather");
-    const [data, setData]: Array<any> = useState("");
+    const [search, setSearch] = useState<string>("");
+    const [latitude, setLatitude] = useState<number>(0);
+    const [longitude, setLongitude] = useState<number>(0);
+    const [amountDays, setAmountDays] = useState<string>("weather");
+    const [data, setData]: Array<IData | any> = useState({});
 
     //значение поисковой строки
-    const initSearch = (value: string): void => {
+    const initSearch = (value: string) => {
         setSearch(value);
     };
 
     //значение геопозиции
-    const initGeo = (latitude: number, longitude: number): void => {
+    const initGeo = (latitude: number, longitude: number) => {
         setLatitude(latitude);
         setLongitude(longitude);
     };
 
-    //значение полученых данных с сервера
-    const changeData = (value: object): void => {
-        setData(value);
-    };
-    //значение кнопки погоды на 5 дней или один
-    const selectAmountDays = (value: string): void => {
-        setAmountDays(value);
-    };
-
     // запуск запроса к серверу
 
-    useEffect((): void => {
-
+    const request = async () => {
+        const result = await requestAPI(keyAPI, latitude, longitude, search, amountDays, setData);
+        setData(result);
+    };
+    useEffect(() => {
         if ((latitude !== 0 && longitude !== 0) || search !== "") {
-            console.log('render req');
-
-            requestAPI(keyAPI, latitude, longitude, search, amountDays, changeData);
+            request();
         }
     }, [latitude, longitude, search, amountDays]);
 
@@ -51,7 +43,7 @@ const App = (): JSX.Element => {
             <div className={style.widget}>
                 <div className={style.box}>
                     <Search onSearch={initSearch} initGeo={initGeo} />
-                    <ButtonDays onSelect={selectAmountDays} />
+                    <ButtonDays setAmountDays={setAmountDays} amountDays={amountDays} />
                 </div>
                 <Answer data={data} amountDays={amountDays} />
             </div>

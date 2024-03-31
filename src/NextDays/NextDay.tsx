@@ -1,75 +1,39 @@
-import {  useEffect} from "react";
+import { FC } from "react";
 import style from "./style.module.scss";
+import cn from "classnames";
+import { IArrMain } from "../type";
+import { dateCorrect } from "../handlerFunc/corectDate";
 
-// массив для замены числа месяца на название
-const arrMounth: Array<string> = [
-    "января",
-    "февраля",
-    "марта",
-    "апреля",
-    "мая",
-    "июня",
-    "июля",
-    "августа",
-    "сентября",
-    "октября",
-    "ноября",
-    "декабря",
-];
+interface IProps {
+    arr: Array<IArrMain>;
+    setActiveElement: (index: number) => void;
+    active: boolean;
+    index: number;
+}
 
-//корректировка даты и замена на название месяца
-const dateCorrect = (date: string): string => {
-    let count: string | number = "";
-    let newDate = date.slice(5, 10).split("-").join(" ").split(" ");
-    
-    for (let index = 0; index < arrMounth.length + 1; index++) {
-        if (index <= 9) {
-            count = "0" + index;
-        } else {
-            count = index;
-        }
-        if (+newDate[0] === +count) {
-            newDate[0] = arrMounth[index - 1];
-        }
-    }
-    return newDate.reverse().join(" ");
-};
-
-const NextDay = ({ arr, onClick }: any): JSX.Element => {
-
-    let dateWeather:string;
+const NextDay: FC<IProps> = ({ arr, setActiveElement, active, index }) => {
+    let dateWeather: string;
     dateWeather = dateCorrect(arr[0].dt_txt);
     let imgUrl = `https://openweathermap.org/img/wn/${arr[0].weather[0].icon}@2x.png`;
-    
+
     //расчет максимальной температуры за день
     let maxTemp = arr[0].main.temp;
-    arr.map((el: any):void => {
-        if( maxTemp < el.main.temp){
+    arr.map((el: IArrMain) => {
+        if (maxTemp < el.main.temp) {
             maxTemp = el.main.temp;
         }
     });
 
     let temp = Math.round(maxTemp);
 
-    // при наведении на элемент, внизу разворачивается погода на этот день по времени
-    //удаляются все активные классы
-    //добавляется клас на выбранный элемент
+    // при клике на элемент, внизу разворачивается погода на этот день по времени
     const fullWeatherDay = (e: any): void => {
-        onClick(arr);
+        setActiveElement(index);
         e.preventDefault();
-        e.target.parentElement.querySelectorAll(`.${style.active}`).forEach((element: HTMLElement): void => {
-            element.classList.remove(`${style.active}`);
-        });
-        e.target.classList.add(`${style.active}`);
     };
 
-    //при переключение на 5 дней добавляется класс на первый элемент
-    useEffect((): void => {
-        document.querySelector(`.${style.weather}`)?.classList.add(`${style.active}`);
-    }, []);
-
     return (
-        <div key={arr[0].dt_txt} className={style.weather} onClick={fullWeatherDay}>
+        <div key={arr[0].dt_txt} className={cn(style.weather, active && style.active)} onClick={fullWeatherDay}>
             <h1 className={style.weather__title}>{dateWeather}</h1>
             <div className={style.weather__box}>
                 <div className={style.weather__box_block}>

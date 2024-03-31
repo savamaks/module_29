@@ -1,14 +1,15 @@
-const separation = (data: any): object => {
-    
-    let arrOneDay: Array<object> = [];
-    let arrTwoDay: Array<object> = [];
-    let arrThreeDay: Array<object> = [];
-    let arrFourDay: Array<object> = [];
-    let arrFiveDay: Array<object> = [];
-    let arrSixDay: Array<object> = [];
+import { IArrMain, IData, IDataOneDay } from "../type";
+
+const separation = (data: IData ) => {
+    let arrOneDay: Array<IArrMain> = [];
+    let arrTwoDay: Array<IArrMain> = [];
+    let arrThreeDay: Array<IArrMain> = [];
+    let arrFourDay: Array<IArrMain> = [];
+    let arrFiveDay: Array<IArrMain> = [];
+    let arrSixDay: Array<IArrMain> = [];
 
     // разбиение данных на прогноз по дням
-    data.list.map((el: any): void => {
+    data.list.map((el: IArrMain) => {
         let startDate = Date.parse(data.list[0].dt_txt) / 1000;
 
         let one = new Date(startDate * 1000).toLocaleDateString().slice(0, 2);

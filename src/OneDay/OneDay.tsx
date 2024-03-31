@@ -1,12 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 import style from "./style.module.scss";
 // import  '../style/variables.module.scss'
 import sunrise from "../icons/icons8-восход-48.png";
 import sunset from "../icons/icons8-закат-солнца-48.png";
 import arrow from "../icons/стрелка.png";
 import Loader from "../Loader/Loader";
+import {  IDataOneDay } from "../type";
 
-const OneDay = ({ data }: any): JSX.Element => {
+interface IProps {
+    data: IDataOneDay;
+}
+const OneDay: FC<IProps> = ({ data }) => {
+
     // проверка те ли данные пришли если нет то выскакивает лоадер
     if (!data.name) {
         return <Loader />;
